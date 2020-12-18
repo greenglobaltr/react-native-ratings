@@ -6,7 +6,7 @@ import {
   View, Text, Animated, PanResponder, Image,
   StyleSheet, Platform
 } from 'react-native';
-
+import {Svg, Image as ImageSvg} from 'react-native-svg';
 // RATING IMAGES WITH STATIC BACKGROUND COLOR (white)
 const STAR_IMAGE = require('./images/star.png');
 const HEART_IMAGE = require('./images/heart.png');
@@ -156,9 +156,14 @@ export default class SwipeRating extends Component {
     const source = TYPES[type].source;
 
     return times(ratingCount, index => (
-      <View key={index} style={styles.starContainer}>
-        <Image source={source} style={{ width: imageSize, height: imageSize, tintColor }} />
-      </View>
+      <Svg key={index} width={imageSize} height={imageSize}>
+        <ImageSvg
+          width={'100%'}
+          height={'100%'}
+          preserveAspectRatio="xMidYMid slice"
+          href={source}
+        />
+      </Svg>
     ));
   }
 
