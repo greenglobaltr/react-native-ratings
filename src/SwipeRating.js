@@ -152,7 +152,7 @@ export default class SwipeRating extends Component {
   }
 
   renderRatings() {
-    const { imageSize, ratingCount, type, tintColor } = this.props;
+    const { imageSize, ratingCount, type, tintColor,isSvg } = this.props;
     const source = TYPES[type].source;
 
    return times(ratingCount, index => (
@@ -337,6 +337,7 @@ const fractionsType = (props, propName, componentName) => {
 
 SwipeRating.propTypes = {
   type: PropTypes.string,
+  isSvg: PropTypes.bool,
   ratingImage: PropTypes.node,
   ratingColor: PropTypes.string,
   ratingBackgroundColor: PropTypes.string,
