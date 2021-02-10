@@ -155,15 +155,19 @@ export default class SwipeRating extends Component {
     const { imageSize, ratingCount, type, tintColor } = this.props;
     const source = TYPES[type].source;
 
-    return times(ratingCount, index => (
-      <Svg key={index} width={imageSize} height={imageSize}>
-        <ImageSvg
-          width={'100%'}
-          height={'100%'}
-          preserveAspectRatio="xMidYMid slice"
-          href={source}
-        />
-      </Svg>
+   return times(ratingCount, index => (
+      isSvg ?
+        <Svg key={index} width={imageSize} height={imageSize}>
+          <ImageSvg
+            width={'100%'}
+            height={'100%'}
+            preserveAspectRatio="xMidYMid slice"
+            href={source}
+          />
+        </Svg> :
+        <View key={index} style={styles.starContainer}>
+          <Image source={source} style={{width: imageSize, height: imageSize, tintColor}}/>
+        </View>
     ));
   }
 
